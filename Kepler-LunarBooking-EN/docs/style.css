@@ -1,0 +1,2991 @@
+/* ============================================================================
+   ARCHIVO: style.css
+   PROYECTO: NASA LunarBooking & eDreams Artemis (Polo Sur Lunar + Mapa 2D Real)
+   ESTILO: Agencia de Viajes Moderna (Booking.com / eDreams) con Fotografía Real NASA
+   PALETA OFICIAL NASA Y VARIANTES RECONOCIDAS:
+     - NASA Blue (Primario):        #0B3D91
+     - NASA Vector Red (Acento):    #FC3D21
+     - NASA Science Blue:           #105BD8
+     - NASA Deep Space Navy:        #061F4A
+     - NASA Dark Horizon:           #04112B
+     - NASA Sky Accent:             #4773AA
+     - NASA Lunar Ice:              #DCE4EF
+     - NASA Cloud Surface:          #F4F7FB
+     - NASA Pure White:             #FFFFFF
+     - NASA Neutral Slate:          #5B616B
+     - NASA Carbon:                 #212121
+   ============================================================================ */
+
+:root {
+  --nasa-blue: #0B3D91;
+  --nasa-red: #FC3D21;
+  --nasa-science-blue: #105BD8;
+  --nasa-navy: #061F4A;
+  --nasa-horizon: #04112B;
+  --nasa-sky: #4773AA;
+  --nasa-ice: #DCE4EF;
+  --nasa-gray-light: #F4F7FB;
+  --nasa-gray-mid: #AEB0B5;
+  --nasa-slate: #5B616B;
+  --nasa-carbon: #212121;
+  --nasa-white: #FFFFFF;
+
+  --bg-page: #F4F7FB;
+  --bg-card: #FFFFFF;
+  --bg-subtle: #F4F7FB;
+  --text-main: #212121;
+  --text-muted: #5B616B;
+  --border-soft: #DCE4EF;
+
+  --font-main: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'Consolas', 'Courier New', monospace;
+  --radius-xl: 14px;
+  --radius-lg: 10px;
+  --radius-md: 8px;
+  --radius-sm: 6px;
+  --shadow-soft: 0 4px 16px rgba(6, 31, 74, 0.07);
+  --shadow-float: 0 12px 32px rgba(6, 31, 74, 0.16);
+  --transition-speed: 0.18s;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-main);
+  font-size: 14.5px;
+  line-height: 1.5;
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+/* ============================================================================
+   CABECERA COMPACTA ESTILO BOOKING.COM / eDREAMS
+   ============================================================================ */
+.top-navbar {
+  background: linear-gradient(90deg, var(--nasa-horizon) 0%, var(--nasa-navy) 45%, var(--nasa-blue) 100%);
+  color: var(--nasa-white);
+  padding: 10px 20px;
+  border-bottom: 1px solid rgba(220, 228, 239, 0.25);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 18px rgba(4, 17, 43, 0.28);
+}
+
+.navbar-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nasa-emblem {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, var(--nasa-science-blue), var(--nasa-blue));
+  border: 2px solid var(--nasa-white);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 11px;
+  letter-spacing: 0.8px;
+  color: var(--nasa-white);
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(4, 17, 43, 0.4);
+}
+
+.nasa-emblem::after {
+  content: '';
+  position: absolute;
+  width: 46px;
+  height: 12px;
+  border-top: 2.5px solid var(--nasa-red);
+  border-radius: 50%;
+  transform: rotate(-22deg);
+  pointer-events: none;
+}
+
+.brand-titles h1 {
+  margin: 0;
+  font-size: 18.5px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  line-height: 1.15;
+}
+
+.brand-titles span {
+  display: block;
+  font-size: 11.5px;
+  color: var(--nasa-ice);
+}
+
+.level-pill-group {
+  display: inline-flex;
+  background-color: rgba(4, 17, 43, 0.65);
+  border: 1px solid var(--nasa-sky);
+  border-radius: 999px;
+  padding: 3px;
+  gap: 3px;
+}
+
+.level-pill {
+  background: transparent;
+  color: var(--nasa-ice);
+  border: none;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+}
+
+.level-pill:hover {
+  color: var(--nasa-white);
+  background-color: rgba(71, 115, 170, 0.35);
+}
+
+.level-pill.active {
+  background-color: var(--nasa-white);
+  color: var(--nasa-navy);
+  box-shadow: 0 2px 6px rgba(4, 17, 43, 0.25);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* ============================================================================
+   PANEL DESPLEGABLE DE ADAPTACIONES (COMPACTO)
+   ============================================================================ */
+.a11y-drawer-wrapper {
+  max-width: 1280px;
+  margin: 8px auto 0;
+  padding: 0 20px;
+}
+
+details.expandable-drawer {
+  background-color: var(--bg-card);
+  border: 1.5px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+details.expandable-drawer > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 11px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-weight: 700;
+  font-size: 13.5px;
+  color: var(--nasa-navy);
+  background-color: var(--bg-card);
+  user-select: none;
+}
+
+details.expandable-drawer > summary::-webkit-details-marker {
+  display: none;
+}
+
+details.expandable-drawer > summary:hover {
+  background-color: var(--bg-subtle);
+}
+
+.summary-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.summary-toggle-pill {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--nasa-science-blue);
+  background-color: var(--nasa-gray-light);
+  border: 1px solid var(--nasa-ice);
+  padding: 4px 11px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+details.expandable-drawer[open] > summary {
+  border-bottom: 1px solid var(--border-soft);
+  background-color: var(--bg-subtle);
+}
+
+details.expandable-drawer[open] > summary .summary-toggle-pill {
+  background-color: var(--nasa-navy);
+  color: var(--nasa-white);
+}
+
+.drawer-body {
+  padding: 16px 20px;
+}
+
+.adaptations-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+@media (max-width: 980px) {
+  .adaptations-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.adaptation-category-card {
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+}
+
+.adaptation-category-card h3 {
+  margin: 0 0 4px;
+  font-size: 13.5px;
+  color: var(--nasa-navy);
+}
+
+.adaptation-category-card p {
+  margin: 0 0 8px;
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+
+.a11y-btn-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.a11y-btn {
+  background-color: var(--bg-card);
+  color: var(--nasa-navy);
+  border: 1px solid var(--border-soft);
+  padding: 7px 11px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  transition: all var(--transition-speed);
+}
+
+.a11y-btn:hover {
+  border-color: var(--nasa-science-blue);
+}
+
+.a11y-btn.active {
+  background-color: var(--nasa-blue);
+  color: var(--nasa-white);
+  border-color: var(--nasa-navy);
+}
+
+.a11y-btn .status-dot {
+  font-size: 10.5px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background-color: var(--nasa-gray-light);
+  color: var(--nasa-slate);
+}
+
+.a11y-btn.active .status-dot {
+  background-color: var(--nasa-red);
+  color: var(--nasa-white);
+}
+
+/* ============================================================================
+   HERO CON FOTOGRAFÍA REAL DE LA NASA + ESTÉTICA AGENCIA DE VIAJES
+   ============================================================================ */
+.hero-banner {
+  background:
+    linear-gradient(180deg, rgba(4, 17, 43, 0.78) 0%, rgba(11, 61, 145, 0.85) 55%, rgba(6, 31, 74, 0.94) 100%),
+    url('img/cabeus_lcross.jpg') center center / cover no-repeat;
+  color: var(--nasa-white);
+  padding: 22px 20px 48px;
+  margin-top: 8px;
+  text-align: center;
+  border-bottom: 2px solid var(--nasa-blue);
+}
+
+.hero-inner {
+  max-width: 1020px;
+  margin: 0 auto;
+}
+
+.agency-trust-pills {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.trust-pill {
+  background-color: rgba(4, 17, 43, 0.72);
+  border: 1px solid rgba(220, 228, 239, 0.35);
+  color: var(--nasa-ice);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.2px;
+}
+
+.hero-inner h2 {
+  margin: 0 0 6px;
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: -0.2px;
+  text-shadow: 0 2px 10px rgba(4, 17, 43, 0.6);
+}
+
+.hero-inner p {
+  margin: 0 auto 12px;
+  color: var(--nasa-ice);
+  font-size: 14px;
+  max-width: 800px;
+}
+
+.human-guide-banner {
+  max-width: 860px;
+  margin: 0 auto;
+  background-color: rgba(4, 17, 43, 0.72);
+  border: 1px solid rgba(220, 228, 239, 0.35);
+  border-radius: 999px;
+  padding: 7px 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+  box-shadow: 0 4px 14px rgba(4, 17, 43, 0.35);
+}
+
+.guide-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--nasa-science-blue);
+  border: 1.5px solid var(--nasa-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.guide-text {
+  font-size: 12.5px;
+  color: var(--nasa-ice);
+  line-height: 1.35;
+}
+
+.guide-text strong {
+  color: var(--nasa-white);
+}
+
+/* Buscador Horizontal Compacto Estilo Booking.com / eDreams */
+.search-container-wrapper {
+  max-width: 1220px;
+  margin: -30px auto 22px;
+  padding: 0 20px;
+  position: relative;
+  z-index: 20;
+}
+
+.booking-search-card {
+  background-color: var(--bg-card);
+  border: 3px solid var(--nasa-blue);
+  border-top: 4px solid var(--nasa-red);
+  border-radius: var(--radius-xl);
+  padding: 14px 16px;
+  box-shadow: var(--shadow-float);
+}
+
+.search-grid-centered {
+  display: grid;
+  grid-template-columns: 1.75fr 1fr 1fr 0.85fr auto;
+  gap: 8px;
+  align-items: stretch;
+}
+
+@media (max-width: 1020px) {
+  .search-grid-centered {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .search-grid-centered {
+    grid-template-columns: 1fr;
+  }
+}
+
+.search-cell {
+  background-color: var(--bg-subtle);
+  border: 1.5px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 7px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: border-color var(--transition-speed), background-color var(--transition-speed);
+}
+
+.search-cell:hover,
+.search-cell:focus-within {
+  border-color: var(--nasa-science-blue);
+  background-color: var(--bg-card);
+}
+
+.search-cell label {
+  font-size: 10.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--nasa-blue);
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.search-cell input,
+.search-cell select {
+  border: none;
+  background: transparent;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text-main);
+  font-family: inherit;
+  outline: none;
+  width: 100%;
+  padding: 2px 0;
+}
+
+.btn-search-hero {
+  padding: 0 24px;
+  font-size: 14.5px;
+  border-radius: var(--radius-md);
+  min-height: 54px;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(252, 61, 33, 0.3);
+}
+
+.search-subbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-soft);
+}
+
+.search-presets-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.preset-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--nasa-slate);
+}
+
+.preset-mission-btn {
+  background-color: var(--bg-subtle);
+  color: var(--nasa-navy);
+  border: 1px solid var(--border-soft);
+  padding: 5px 11px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+}
+
+.preset-mission-btn:hover,
+.preset-mission-btn.active {
+  background-color: var(--nasa-blue);
+  color: var(--nasa-white);
+  border-color: var(--nasa-blue);
+}
+
+.map-toggle-btn {
+  background-color: var(--nasa-navy);
+  color: var(--nasa-white);
+  border: 1.5px solid var(--nasa-science-blue);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color var(--transition-speed);
+}
+
+.map-toggle-btn:hover {
+  background-color: var(--nasa-science-blue);
+}
+
+/* ============================================================================
+   MAPA 2D INTERACTIVO DEL POLO SUR CON FOTOGRAFÍA REAL DE LA LUNA (LROC WAC)
+   ============================================================================ */
+.south-pole-map-drawer {
+  margin-top: 10px;
+  border: 1.5px solid var(--nasa-science-blue);
+  border-radius: var(--radius-lg);
+  background-color: var(--bg-subtle);
+  overflow: hidden;
+}
+
+.south-pole-map-drawer > summary {
+  padding: 9px 16px;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--nasa-white);
+  background: linear-gradient(90deg, var(--nasa-horizon) 0%, var(--nasa-navy) 50%, var(--nasa-blue) 100%);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.south-pole-map-drawer > summary::-webkit-details-marker {
+  display: none;
+}
+
+.map-2d-workspace {
+  padding: 14px 16px;
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 18px;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .map-2d-workspace {
+    grid-template-columns: 1fr;
+  }
+}
+
+.map-canvas-container {
+  position: relative;
+  background-color: var(--nasa-horizon);
+  border: 2px solid var(--nasa-sky);
+  border-radius: var(--radius-lg);
+  padding: 8px;
+  text-align: center;
+  box-shadow: inset 0 0 24px rgba(4, 17, 43, 0.9);
+}
+
+#canvasMapaPoloSur2D {
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  cursor: crosshair;
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%;
+  box-shadow: 0 0 18px rgba(16, 91, 216, 0.35);
+}
+
+.map-hover-readout {
+  margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--nasa-ice);
+  background-color: rgba(6, 31, 74, 0.85);
+  border: 1px solid rgba(71, 115, 170, 0.45);
+  border-radius: var(--radius-sm);
+  padding: 4px 8px;
+  display: block;
+}
+
+.map-layer-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 4px 0;
+}
+
+.map-layer-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--nasa-navy);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+
+.map-2d-info-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.map-2d-info-panel h4 {
+  margin: 0;
+  font-size: 15px;
+  color: var(--nasa-navy);
+}
+
+.map-2d-selected-box {
+  background-color: var(--bg-card);
+  border: 1.5px solid var(--border-soft);
+  border-left: 5px solid var(--nasa-red);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.custom-coords-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+@media (max-width: 860px) {
+  .custom-coords-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Botones Generales NASA */
+.btn {
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 8px 16px;
+  transition: all var(--transition-speed);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: inherit;
+}
+
+.btn-red {
+  background-color: var(--nasa-red);
+  color: var(--nasa-white);
+}
+
+.btn-red:hover {
+  background-color: #d92f14;
+}
+
+.btn-blue {
+  background-color: var(--nasa-science-blue);
+  color: var(--nasa-white);
+}
+
+.btn-blue:hover {
+  background-color: var(--nasa-blue);
+}
+
+.btn-outline-white {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: var(--nasa-white);
+  border: 1px solid rgba(220, 228, 239, 0.55);
+}
+
+.btn-outline-white:hover {
+  background-color: var(--nasa-white);
+  color: var(--nasa-navy);
+}
+
+.btn-outline-blue {
+  background-color: transparent;
+  color: var(--nasa-blue);
+  border: 1.5px solid var(--nasa-blue);
+}
+
+.btn-outline-blue:hover {
+  background-color: var(--nasa-blue);
+  color: var(--nasa-white);
+}
+
+/* ============================================================================
+   BANNER DE MODO ACTIVO Y ADAPTACIÓN PROFUNDA (NIÑO / PROMEDIO / AVANZADO)
+   ============================================================================ */
+.active-mode-strip {
+  max-width: 1220px;
+  margin: 0 auto 14px;
+  padding: 0 20px;
+}
+
+.active-mode-box {
+  background-color: var(--nasa-blue);
+  color: var(--nasa-white);
+  border-radius: var(--radius-md);
+  padding: 10px 16px;
+  font-size: 13px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  box-shadow: var(--shadow-soft);
+  border-left: 6px solid var(--nasa-red);
+}
+
+body.nivel-estudiante .active-mode-box {
+  background: linear-gradient(90deg, var(--nasa-science-blue) 0%, var(--nasa-blue) 100%);
+  border-left-color: var(--nasa-white);
+}
+
+body.nivel-profesional .active-mode-box {
+  background: linear-gradient(90deg, var(--nasa-horizon) 0%, var(--nasa-navy) 100%);
+  border: 1.5px solid var(--nasa-sky);
+  border-left: 6px solid var(--nasa-red);
+}
+
+/* Cajas de descripción sencilla visibles en Modo Niño */
+.kid-desc-box {
+  display: none;
+  background-color: rgba(16, 91, 216, 0.08);
+  border-left: 3.5px solid var(--nasa-science-blue);
+  color: var(--nasa-navy);
+  padding: 6px 9px;
+  border-radius: 4px;
+  font-size: 11.8px;
+  line-height: 1.4;
+  margin-top: 4px;
+  font-weight: 600;
+}
+
+body.nivel-estudiante .kid-desc-box {
+  display: block;
+}
+
+/* Ocultar tecnicismos cuando está activo el Modo Niño */
+body.nivel-estudiante .solo-tecnico,
+body.nivel-estudiante .solo-avanzado,
+body.nivel-estudiante .custom-coords-row,
+body.nivel-estudiante .spherical-coords-panel,
+body.nivel-estudiante #seccionCodigoHooks,
+body.nivel-estudiante .prof-filter-drawer,
+body.nivel-estudiante .chart-mode-btns,
+body.nivel-estudiante .chart-series-toggles {
+  display: none !important;
+}
+
+/* Elementos exclusivos del Modo Avanzado */
+.solo-avanzado {
+  display: none !important;
+}
+
+body.nivel-profesional .solo-avanzado {
+  display: inline-flex !important;
+}
+
+/* Barra de Intención de Búsqueda (Ambas / Solo Fechas -> Lugares / Solo Lugar -> Fechas) */
+.search-intent-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.intent-pills-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.intent-pill {
+  background-color: var(--bg-subtle);
+  color: var(--nasa-navy);
+  border: 1.5px solid var(--border-soft);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+}
+
+.intent-pill:hover {
+  border-color: var(--nasa-science-blue);
+  color: var(--nasa-blue);
+}
+
+.intent-pill.active {
+  background-color: var(--nasa-blue);
+  color: var(--nasa-white);
+  border-color: var(--nasa-blue);
+}
+
+.sin-fecha-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--nasa-blue);
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-soft);
+  padding: 4px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.search-cell.date-dimmed input {
+  opacity: 0.45;
+  background-color: var(--nasa-gray-light);
+  cursor: not-allowed;
+}
+
+.search-cell.place-any select {
+  border-color: var(--nasa-red);
+  background-color: rgba(252, 61, 33, 0.06);
+  font-weight: 800;
+}
+
+/* Banner de Consecuencia tras pulsar Buscar + Tarjetas de Mejores Fechas */
+.search-feedback-toast {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  background-color: rgba(16, 91, 216, 0.1);
+  border-left: 4px solid var(--nasa-science-blue);
+  color: var(--nasa-navy);
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.featured-result-card.just-updated {
+  outline: 3px solid var(--nasa-red);
+  box-shadow: 0 0 0 6px rgba(252, 61, 33, 0.16);
+}
+
+body.modo-autismo .featured-result-card.just-updated {
+  outline: 2px solid var(--nasa-blue);
+  box-shadow: none;
+}
+
+.top-fechas-panel {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  background-color: var(--bg-card);
+  border: 1.5px solid var(--nasa-science-blue);
+}
+
+.top-fechas-panel h4 {
+  margin: 0 0 8px;
+  font-size: 13.5px;
+  color: var(--nasa-navy);
+}
+
+.top-fechas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 8px;
+}
+
+.top-fecha-chip {
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  font-size: 11.8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.top-fecha-chip.rank-1 {
+  border-color: var(--nasa-red);
+  border-left: 4px solid var(--nasa-red);
+}
+
+/* Puente de Transición exclusivo del Modo Intermedio (Promedio) */
+.intermedio-bridge-card {
+  display: none;
+  margin-top: 14px;
+  background: linear-gradient(180deg, var(--bg-subtle) 0%, var(--bg-card) 100%);
+  border: 1.5px solid var(--nasa-sky);
+  border-left: 5px solid var(--nasa-blue);
+  border-radius: var(--radius-md);
+  padding: 13px 16px;
+}
+
+body.nivel-estandar .intermedio-bridge-card {
+  display: block;
+}
+
+.bridge-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.bridge-head h4 {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--nasa-navy);
+}
+
+.bridge-concepts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 820px) {
+  .bridge-concepts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bridge-concept-box {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  font-size: 11.8px;
+  line-height: 1.38;
+}
+
+.bridge-concept-box .simple-ref {
+  color: var(--nasa-science-blue);
+  font-weight: 700;
+  display: block;
+}
+
+.bridge-concept-box .pro-ref {
+  color: var(--nasa-navy);
+  font-family: var(--font-mono);
+  font-weight: 800;
+  display: block;
+  margin-top: 2px;
+}
+
+.bridge-preview-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border-soft);
+  font-size: 12px;
+}
+
+/* Panel de Coordenadas Esféricas (r, θ, φ) exclusivo de Modo Avanzado */
+.spherical-coords-panel {
+  display: none;
+  margin-top: 8px;
+  background-color: rgba(6, 31, 74, 0.94);
+  border: 1.5px solid var(--nasa-science-blue);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  color: var(--nasa-white);
+}
+
+body.nivel-profesional .spherical-coords-panel {
+  display: block;
+}
+
+.spherical-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 6px;
+}
+
+@media (max-width: 680px) {
+  .spherical-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.spherical-cell label {
+  display: block;
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--nasa-ice);
+  margin-bottom: 2px;
+}
+
+.spherical-cell input {
+  width: 100%;
+  background-color: var(--nasa-horizon);
+  color: var(--nasa-white);
+  border: 1px solid var(--nasa-sky);
+  border-radius: 4px;
+  padding: 4px 7px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.vector-3d-readout {
+  margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--nasa-ice);
+  background-color: rgba(4, 17, 43, 0.75);
+  padding: 4px 8px;
+  border-radius: 4px;
+  border-left: 3px solid var(--nasa-red);
+}
+
+/* Panel interactivo directo en Modo Avanzado / Profesional */
+.prof-live-controls-bar {
+  display: none;
+  margin-top: 12px;
+  background-color: rgba(6, 31, 74, 0.92);
+  border: 1.5px solid var(--nasa-science-blue);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  color: var(--nasa-white);
+}
+
+body.nivel-profesional .prof-live-controls-bar {
+  display: block;
+}
+
+.prof-live-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  margin-top: 8px;
+}
+
+@media (max-width: 980px) {
+  .prof-live-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .prof-live-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.prof-live-cell {
+  background-color: rgba(4, 17, 43, 0.85);
+  border: 1px solid rgba(71, 115, 170, 0.6);
+  border-radius: var(--radius-sm);
+  padding: 6px 8px;
+}
+
+.prof-live-cell label {
+  display: block;
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--nasa-ice);
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+
+.prof-live-cell select,
+.prof-live-cell input {
+  width: 100%;
+  background-color: var(--nasa-navy);
+  color: var(--nasa-white);
+  border: 1px solid var(--nasa-sky);
+  border-radius: 4px;
+  padding: 4px 6px;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+
+/* ============================================================================
+   ACADEMIA LUNAR INTERACTIVA PARA ESTUDIANTES Y ZONA INFANTIL / DIVULGATIVA
+   ============================================================================ */
+.student-helper-card {
+  display: none;
+  max-width: 1220px;
+  margin: 0 auto 20px;
+  padding: 0 20px;
+}
+
+body.nivel-estudiante .student-helper-card {
+  display: block;
+}
+
+.student-helper-inner {
+  background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-subtle) 100%);
+  border: 2px solid var(--nasa-science-blue);
+  border-left: 7px solid var(--nasa-red);
+  border-radius: var(--radius-xl);
+  padding: 18px 22px;
+  box-shadow: var(--shadow-soft);
+}
+
+.student-academy-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.student-academy-header h3 {
+  margin: 0;
+  color: var(--nasa-navy);
+  font-size: 17px;
+}
+
+.student-academy-header span {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--nasa-white);
+  background-color: var(--nasa-blue);
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.student-pillars {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 1020px) {
+  .student-pillars {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .student-pillars {
+    grid-template-columns: 1fr;
+  }
+}
+
+.student-pillar {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  border: 1.5px solid var(--border-soft);
+  font-size: 12.8px;
+  line-height: 1.48;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.student-pillar .pillar-badge {
+  align-self: flex-start;
+  background-color: var(--nasa-gray-light);
+  color: var(--nasa-blue);
+  font-weight: 800;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--nasa-ice);
+}
+
+.student-pillar strong {
+  display: block;
+  color: var(--nasa-navy);
+  font-size: 13.5px;
+}
+
+.student-pillar .pillar-example {
+  margin-top: auto;
+  padding-top: 6px;
+  border-top: 1px dashed var(--border-soft);
+  font-size: 11.8px;
+  color: var(--nasa-blue);
+  font-weight: 600;
+}
+
+/* ============================================================================
+   LAYOUT PRINCIPAL COMPACTO ESTILO BOOKING.COM (MENOS SCROLL)
+   ============================================================================ */
+.main-layout {
+  max-width: 1220px;
+  margin: 0 auto 32px;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .main-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Columna Izquierda: Menú de Filtros Compacto Estilo Booking */
+.filter-box {
+  background-color: var(--bg-card);
+  border: 1.5px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.filter-header {
+  background: linear-gradient(90deg, var(--nasa-navy) 0%, var(--nasa-blue) 100%);
+  color: var(--nasa-white);
+  padding: 11px 16px;
+  font-weight: 800;
+  font-size: 13.5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter-group {
+  padding: 13px 15px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.filter-group:last-child {
+  border-bottom: none;
+}
+
+.filter-group h3 {
+  margin: 0 0 4px;
+  font-size: 13px;
+  color: var(--nasa-blue);
+  font-weight: 800;
+}
+
+.filter-hint {
+  margin: 0 0 8px;
+  font-size: 11.5px;
+  color: var(--text-muted);
+  line-height: 1.35;
+}
+
+.filter-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.filter-row:last-child {
+  margin-bottom: 0;
+}
+
+.filter-row-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--text-main);
+}
+
+.filter-row-head strong {
+  color: var(--nasa-blue);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+}
+
+.slider-with-steppers {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.slider-with-steppers input[type="range"] {
+  width: 100%;
+  accent-color: var(--nasa-science-blue);
+  cursor: pointer;
+  height: 6px;
+}
+
+.step-adj-btn {
+  display: none;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--nasa-blue);
+  background-color: var(--bg-subtle);
+  color: var(--nasa-navy);
+  font-weight: 900;
+  font-size: 15px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+body.modo-motora .step-adj-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chip-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 6px;
+}
+
+.filter-chip {
+  background-color: var(--bg-subtle);
+  color: var(--nasa-navy);
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  padding: 4px 9px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+}
+
+.filter-chip:hover {
+  background-color: var(--nasa-science-blue);
+  color: var(--nasa-white);
+}
+
+.prof-filter-drawer {
+  margin-top: 10px;
+  border: 1.5px solid var(--nasa-sky);
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-subtle);
+}
+
+.prof-filter-drawer > summary {
+  padding: 8px 10px;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--nasa-navy);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.prof-filter-drawer > summary::-webkit-details-marker {
+  display: none;
+}
+
+.prof-filter-body {
+  padding: 10px;
+  border-top: 1px solid var(--border-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ============================================================================
+   COLUMNA DERECHA: TARJETA DESTACADA CON FOTO REAL NASA + OFERTAS BOOKING
+   ============================================================================ */
+.results-column {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.featured-result-card {
+  background-color: var(--bg-card);
+  border: 1.5px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  padding: 20px 24px;
+  box-shadow: var(--shadow-soft);
+}
+
+.featured-top {
+  display: grid;
+  grid-template-columns: 165px 1fr auto;
+  gap: 16px;
+  align-items: center;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+@media (max-width: 860px) {
+  .featured-top {
+    grid-template-columns: 1fr;
+  }
+}
+
+.featured-photo-frame {
+  position: relative;
+  width: 100%;
+  height: 112px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 2px solid var(--nasa-blue);
+  background-color: var(--nasa-horizon);
+  box-shadow: 0 4px 12px rgba(4, 17, 43, 0.18);
+}
+
+.featured-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.featured-photo-frame .photo-credit-badge {
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  right: 4px;
+  background-color: rgba(4, 17, 43, 0.82);
+  color: var(--nasa-ice);
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.featured-title-block h2 {
+  margin: 6px 0 4px;
+  font-size: 20px;
+  color: var(--nasa-navy);
+  line-height: 1.2;
+}
+
+.badge-nasa {
+  display: inline-block;
+  background-color: var(--nasa-blue);
+  color: var(--nasa-white);
+  font-size: 10.5px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.human-place-summary {
+  margin: 4px 0 6px;
+  font-size: 13.5px;
+  color: var(--text-muted);
+  max-width: 620px;
+}
+
+.coords-pill {
+  display: inline-block;
+  background-color: var(--bg-subtle);
+  color: var(--nasa-navy);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-soft);
+}
+
+body.nivel-estudiante .coords-pill {
+  display: none;
+}
+
+.booking-score-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--bg-subtle);
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-soft);
+}
+
+.score-text {
+  text-align: right;
+}
+
+.score-text strong {
+  display: block;
+  font-size: 13px;
+  color: var(--nasa-navy);
+}
+
+.score-text span {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.score-number {
+  background-color: var(--nasa-blue);
+  color: var(--nasa-white);
+  font-weight: 900;
+  font-size: 18px;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px 10px 10px 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 8px rgba(11, 61, 145, 0.25);
+}
+
+.optimal-window-banner {
+  margin-top: 14px;
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-soft);
+  border-left: 5px solid var(--nasa-science-blue);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+}
+
+.optimal-window-banner h3 {
+  margin: 0 0 6px;
+  font-size: 14.5px;
+  color: var(--nasa-navy);
+}
+
+.metrics-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 12px;
+}
+
+@media (max-width: 820px) {
+  .metrics-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.metric-tile {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+}
+
+.metric-tile span {
+  display: block;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.metric-tile strong {
+  display: block;
+  font-size: 16.5px;
+  color: var(--nasa-navy);
+  margin-top: 2px;
+}
+
+.metric-tile small {
+  display: block;
+  font-size: 11px;
+  color: var(--nasa-science-blue);
+  margin-top: 2px;
+}
+
+/* ============================================================================
+   CONSOLA DE INGENIERÍA AVANZADA (MODO PROFESIONAL EXPANDIDO)
+   ============================================================================ */
+.prof-telemetry-strip {
+  display: none;
+  margin-top: 14px;
+  background: linear-gradient(180deg, var(--nasa-horizon) 0%, var(--nasa-navy) 100%);
+  color: var(--nasa-white);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  border: 1.5px solid var(--nasa-sky);
+}
+
+body.nivel-profesional .prof-telemetry-strip {
+  display: block;
+}
+
+.prof-strip-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(220, 228, 239, 0.2);
+}
+
+.prof-strip-head h4 {
+  margin: 0;
+  font-size: 12.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--nasa-ice);
+}
+
+.prof-export-btns {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-prof-export {
+  background-color: rgba(16, 91, 216, 0.35);
+  color: var(--nasa-white);
+  border: 1px solid var(--nasa-sky);
+  border-radius: var(--radius-sm);
+  padding: 4px 10px;
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+}
+
+.btn-prof-export:hover {
+  background-color: var(--nasa-red);
+  border-color: var(--nasa-red);
+}
+
+.prof-telemetry-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 860px) {
+  .prof-telemetry-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.prof-kpi {
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(220, 228, 239, 0.22);
+  border-radius: var(--radius-sm);
+  padding: 9px 11px;
+}
+
+.prof-kpi span {
+  display: block;
+  font-size: 10.5px;
+  color: var(--nasa-ice);
+}
+
+.prof-kpi strong {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--nasa-white);
+  margin-top: 2px;
+}
+
+.prof-kpi small {
+  display: block;
+  font-size: 10px;
+  color: var(--nasa-ice);
+  opacity: 0.85;
+  margin-top: 2px;
+}
+
+/* ============================================================================
+   GRÁFICA INTERACTIVA MEJORADA (MODO SERIE TEMPORAL + CARTA POLAR 360°)
+   ============================================================================ */
+.chart-drawer {
+  margin-top: 14px;
+}
+
+.chart-box {
+  background-color: var(--nasa-horizon);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  color: var(--nasa-white);
+  border: 1px solid var(--nasa-sky);
+}
+
+.chart-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(71, 115, 170, 0.35);
+}
+
+.chart-mode-btns {
+  display: inline-flex;
+  background-color: var(--nasa-navy);
+  border: 1px solid var(--nasa-sky);
+  border-radius: 999px;
+  padding: 2px;
+  gap: 3px;
+}
+
+.chart-mode-btn {
+  background: transparent;
+  color: var(--nasa-ice);
+  border: none;
+  padding: 4px 11px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.chart-mode-btn.active {
+  background-color: var(--nasa-science-blue);
+  color: var(--nasa-white);
+}
+
+.chart-series-toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.series-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--nasa-ice);
+  background-color: rgba(6, 31, 74, 0.9);
+  border: 1px solid rgba(220, 228, 239, 0.3);
+  padding: 3px 9px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 11.5px;
+  color: var(--nasa-ice);
+}
+
+#graficaTemporalCanvas {
+  width: 100%;
+  height: 220px;
+  display: block;
+  background-color: var(--nasa-navy);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--nasa-sky);
+  cursor: crosshair;
+}
+
+.chart-hover-bar {
+  margin-top: 8px;
+  background-color: rgba(6, 31, 74, 0.95);
+  border: 1px solid var(--nasa-sky);
+  border-left: 4px solid var(--nasa-red);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--nasa-white);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+/* ============================================================================
+   TARJETAS DE DESTINOS DEL POLO SUR CON FOTOGRAFÍA REAL DE LA NASA
+   ============================================================================ */
+.offers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.booking-card {
+  background-color: var(--bg-card);
+  border: 1.5px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: 14px 18px;
+  display: grid;
+  grid-template-columns: 205px 1fr 215px;
+  gap: 18px;
+  align-items: center;
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.booking-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-float);
+  border-color: var(--nasa-science-blue);
+}
+
+.booking-card.cumple {
+  border-left: 5px solid var(--nasa-blue);
+}
+
+.booking-card.no-cumple {
+  border-left: 5px solid var(--nasa-red);
+}
+
+@media (max-width: 900px) {
+  .booking-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card-thumb {
+  position: relative;
+  border-radius: var(--radius-md);
+  height: 142px;
+  overflow: hidden;
+  border: 1.5px solid var(--nasa-sky);
+  background-color: var(--nasa-horizon);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  color: var(--nasa-white);
+}
+
+.card-thumb img.zone-photo-bg,
+.card-thumb svg.zone-svg-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  transition: transform 0.35s ease;
+}
+
+.booking-card:hover .card-thumb img.zone-photo-bg {
+  transform: scale(1.06);
+}
+
+.card-thumb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(4, 17, 43, 0.45) 0%, rgba(4, 17, 43, 0.15) 50%, rgba(4, 17, 43, 0.78) 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.card-thumb .thumb-overlay {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.card-thumb .crater-tag {
+  align-self: flex-start;
+  background-color: var(--nasa-red);
+  color: var(--nasa-white);
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 999px;
+  box-shadow: 0 2px 6px rgba(4, 17, 43, 0.4);
+}
+
+.card-thumb .crater-coords {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--nasa-white);
+  background-color: rgba(4, 17, 43, 0.85);
+  border: 1px solid rgba(220, 228, 239, 0.3);
+  padding: 2px 7px;
+  border-radius: 4px;
+  align-self: flex-start;
+}
+
+.card-body h3 {
+  margin: 0 0 4px;
+  font-size: 16.5px;
+  color: var(--nasa-navy);
+}
+
+.agency-amenities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 6px;
+}
+
+.amenity-tag {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--nasa-blue);
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-soft);
+  padding: 2px 7px;
+  border-radius: 999px;
+}
+
+.card-body p {
+  margin: 0 0 10px;
+  font-size: 12.8px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.progress-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bar-row {
+  display: grid;
+  grid-template-columns: 125px 1fr 50px;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.bar-track {
+  height: 8px;
+  background-color: var(--nasa-ice);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.bar-fill-ilu {
+  height: 100%;
+  background-color: var(--nasa-red);
+  border-radius: 999px;
+}
+
+.bar-fill-com {
+  height: 100%;
+  background-color: var(--nasa-science-blue);
+  border-radius: 999px;
+}
+
+.card-cta {
+  border-left: 1px solid var(--border-soft);
+  padding-left: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+@media (max-width: 900px) {
+  .card-cta {
+    border-left: none;
+    border-top: 1px solid var(--border-soft);
+    padding-left: 0;
+    padding-top: 12px;
+    align-items: flex-start;
+  }
+}
+
+.best-dates-mini {
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  padding: 6px 9px;
+  font-size: 11px;
+  color: var(--nasa-navy);
+  width: 100%;
+}
+
+/* ============================================================================
+   SECCIÓN COMPARADOR MULTI-MODO Y NOTICIAS CON FOTOS REALES DE LA NASA
+   ============================================================================ */
+.section-container {
+  max-width: 1220px;
+  margin: 0 auto 32px;
+  padding: 0 20px;
+}
+
+.comparador-controls {
+  padding: 14px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 14px;
+  align-items: end;
+}
+
+@media (max-width: 960px) {
+  .comparador-controls {
+    grid-template-columns: 1fr;
+  }
+}
+
+.modo-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.modo-tab {
+  background-color: var(--bg-subtle);
+  color: var(--nasa-navy);
+  border: 1px solid var(--border-soft);
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.modo-tab.active {
+  background-color: var(--nasa-blue);
+  color: var(--nasa-white);
+  border-color: var(--nasa-blue);
+}
+
+.comp-col-config {
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+}
+
+.comp-col-config h4 {
+  margin: 0 0 8px;
+  color: var(--nasa-blue);
+  font-size: 13.5px;
+}
+
+.comp-col-config select,
+.comp-col-config input {
+  width: 100%;
+  padding: 7px 10px;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  margin-bottom: 6px;
+  background-color: var(--bg-card);
+  color: var(--text-main);
+}
+
+.comp-winner-banner {
+  background-color: var(--bg-subtle);
+  border-left: 5px solid var(--nasa-blue);
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 12px;
+  font-weight: 700;
+  font-size: 13.5px;
+  color: var(--nasa-navy);
+}
+
+.comp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.comp-table th,
+.comp-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border-soft);
+  text-align: left;
+}
+
+.comp-table th {
+  background-color: var(--nasa-navy);
+  color: var(--nasa-white);
+}
+
+.comp-table td.win-cell {
+  background-color: rgba(16, 91, 216, 0.1);
+  font-weight: 700;
+  color: var(--nasa-blue);
+}
+
+/* ============================================================================
+   NOTICIAS Y CURIOSIDADES CON FOTOGRAFÍAS REALES DE LA NASA
+   ============================================================================ */
+.section-heading {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 18px;
+}
+
+.section-heading h2 {
+  margin: 0 0 6px;
+  font-size: 22px;
+  color: var(--nasa-navy);
+}
+
+.section-heading p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.curiosidades-filter-bar {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.curiosidades-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 1120px) {
+  .curiosidades-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .curiosidades-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.curiosidad-card {
+  background-color: var(--bg-card);
+  border: 1.5px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.curiosidad-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-float);
+  border-color: var(--nasa-science-blue);
+}
+
+.curiosidad-img-banner {
+  width: 100%;
+  height: 152px;
+  background-color: var(--nasa-horizon);
+  position: relative;
+  overflow: hidden;
+  border-bottom: 3px solid var(--nasa-blue);
+}
+
+.curiosidad-card.humor-card .curiosidad-img-banner {
+  border-bottom-color: var(--nasa-red);
+}
+
+.curiosidad-img-banner img.real-nasa-news-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.curiosidad-card:hover .curiosidad-img-banner img.real-nasa-news-img {
+  transform: scale(1.06);
+}
+
+.curiosidad-img-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(4, 17, 43, 0.25) 0%, rgba(4, 17, 43, 0.05) 50%, rgba(4, 17, 43, 0.72) 100%);
+  pointer-events: none;
+}
+
+.nasa-real-photo-pill {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 2;
+  background-color: rgba(11, 61, 145, 0.9);
+  color: var(--nasa-white);
+  font-size: 9.5px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.2px;
+}
+
+.curiosidad-img-caption {
+  position: absolute;
+  bottom: 6px;
+  right: 8px;
+  z-index: 2;
+  background-color: rgba(4, 17, 43, 0.86);
+  color: var(--nasa-ice);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(220, 228, 239, 0.35);
+}
+
+.curiosidad-content {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.curiosidad-tag {
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background-color: var(--bg-subtle);
+  color: var(--nasa-blue);
+}
+
+.curiosidad-card.humor-card .curiosidad-tag {
+  background-color: rgba(252, 61, 33, 0.12);
+  color: var(--nasa-red);
+}
+
+.curiosidad-card h3 {
+  margin: 8px 0 6px;
+  font-size: 15px;
+  color: var(--nasa-navy);
+  line-height: 1.3;
+}
+
+.curiosidad-body {
+  font-size: 12.8px;
+  color: var(--text-main);
+  margin: 0 0 12px;
+  line-height: 1.5;
+}
+
+.curiosidad-footer {
+  font-size: 11px;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-soft);
+  padding-top: 8px;
+  font-weight: 600;
+}
+
+.literal-tag {
+  display: none;
+  background-color: var(--nasa-navy);
+  color: var(--nasa-white);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+/* ============================================================================
+   TABLA DE POSICIONES DE LLAMADA A DATOS EN EL CÓDIGO (DESPLEGABLE AL FINAL)
+   ============================================================================ */
+.hooks-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+
+.hooks-table th,
+.hooks-table td {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border-soft);
+  text-align: left;
+}
+
+.hooks-table th {
+  background-color: var(--nasa-navy);
+  color: var(--nasa-white);
+}
+
+.hooks-table code {
+  color: var(--nasa-blue);
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+
+.footer-nasa {
+  background-color: var(--nasa-horizon);
+  color: var(--nasa-ice);
+  text-align: center;
+  padding: 22px 20px;
+  font-size: 12.5px;
+  border-top: 3px solid var(--nasa-red);
+}
+
+/* ============================================================================
+   ALINEACIÓN UNIFORME EN TODOS LOS MODOS + ADAPTACIONES FÍSICAS Y COGNITIVAS
+   ============================================================================ */
+.search-grid-centered,
+.metrics-grid-4,
+.prof-telemetry-grid,
+.adaptations-grid,
+.student-pillars,
+.curiosidades-grid,
+.top-fechas-grid,
+.bridge-concepts-grid,
+.booking-card {
+  align-items: stretch;
+}
+
+.search-cell,
+.metric-tile,
+.prof-kpi,
+.adaptation-category-card,
+.student-pillar,
+.curiosidad-card,
+.top-fecha-chip,
+.bridge-concept-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.adaptation-category-card,
+.student-pillar {
+  height: 100%;
+  justify-content: flex-start;
+}
+
+.a11y-btn-stack {
+  margin-top: auto;
+}
+
+/* Lupa Continua (Zoom 100% - 200% + Barra flotante de control rápido) */
+.lupa-control-box {
+  margin-top: 6px;
+  padding: 8px 10px;
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.lupa-control-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--nasa-navy);
+}
+
+.lupa-slider-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lupa-slider-row input[type="range"] {
+  flex: 1;
+  accent-color: var(--nasa-blue);
+  cursor: pointer;
+}
+
+.lupa-mini-btn {
+  border: 1px solid var(--border-soft);
+  background-color: var(--bg-card);
+  color: var(--nasa-navy);
+  font-weight: 800;
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.lupa-mini-btn:hover {
+  border-color: var(--nasa-blue);
+  background-color: var(--nasa-ice);
+}
+
+#lupaFloatingBar {
+  display: none;
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 9998;
+  background-color: var(--nasa-navy);
+  color: var(--nasa-white);
+  border: 2px solid var(--nasa-red);
+  border-radius: 999px;
+  padding: 6px 12px;
+  box-shadow: var(--shadow-float);
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+#lupaFloatingBar.visible {
+  display: flex;
+}
+
+#lupaFloatingBar input[type="range"] {
+  width: 110px;
+  accent-color: var(--nasa-red);
+  cursor: pointer;
+}
+
+#lupaFloatingBar button {
+  background-color: var(--nasa-red);
+  color: var(--nasa-white);
+  border: none;
+  border-radius: 999px;
+  padding: 3px 9px;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* MODO AUTISMO / TEA: Alineación estricta, sin emojis, sin animaciones y menos texto */
+body.modo-autismo,
+body.modo-autismo * {
+  transition: none !important;
+  animation: none !important;
+  transform: none !important;
+}
+
+body.modo-autismo .literal-tag {
+  display: inline-block;
+}
+
+body.modo-autismo .kid-desc-box,
+body.modo-autismo .filter-hint,
+body.modo-autismo .human-guide-banner,
+body.modo-autismo .agency-trust-pills,
+body.modo-autismo .student-pillar .pillar-example {
+  display: none !important;
+}
+
+body.modo-autismo .featured-result-card,
+body.modo-autismo .booking-card,
+body.modo-autismo .curiosidad-card,
+body.modo-autismo .filter-box,
+body.modo-autismo .booking-search-card {
+  box-shadow: none !important;
+  border-width: 1.5px !important;
+  text-align: left !important;
+}
+
+body.modo-autismo .section-heading {
+  text-align: left;
+  margin-left: 0;
+}
+
+body.modo-autismo .curiosidades-filter-bar {
+  justify-content: flex-start;
+}
+
+#tdahFocusBar {
+  display: none;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 95px;
+  border-top: 3px solid var(--nasa-red);
+  border-bottom: 3px solid var(--nasa-red);
+  background: rgba(16, 91, 216, 0.05);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+body.modo-tdah #tdahFocusBar {
+  display: block;
+}
+
+.step-badge {
+  display: none;
+  background-color: var(--nasa-red);
+  color: var(--nasa-white);
+  font-weight: 800;
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+body.modo-tdah .step-badge {
+  display: inline-block;
+}
+
+body.modo-tdah .booking-card,
+body.modo-tdah .curiosidad-card {
+  opacity: 0.6;
+}
+
+body.modo-tdah .booking-card:hover,
+body.modo-tdah .curiosidad-card:hover,
+body.modo-tdah .featured-result-card {
+  opacity: 1;
+  outline: 2.5px solid var(--nasa-science-blue);
+}
+
+/* MODO DISLEXIA + DISCALCULIA NUMÉRICA: Atkinson Hyperlegible + números grandes tabulares */
+body.modo-dislexia {
+  --font-num-dislexia: 'Atkinson Hyperlegible', 'Verdana', 'Tahoma', sans-serif;
+  font-family: 'Atkinson Hyperlegible', 'Verdana', 'Trebuchet MS', sans-serif;
+  letter-spacing: 0.05em;
+  word-spacing: 0.12em;
+  line-height: 1.8;
+}
+
+body.modo-dislexia .score-number,
+body.modo-dislexia .metric-tile strong,
+body.modo-dislexia .prof-kpi strong,
+body.modo-dislexia .coords-pill,
+body.modo-dislexia .filter-row-head strong,
+body.modo-dislexia .bar-row strong,
+body.modo-dislexia .best-dates-mini,
+body.modo-dislexia .bridge-concept-box code,
+body.modo-dislexia .vector-3d-readout,
+body.modo-dislexia .chart-hover-bar,
+body.modo-dislexia input[type="number"],
+body.modo-dislexia input[type="datetime-local"],
+body.modo-dislexia .top-fecha-chip strong {
+  font-family: var(--font-num-dislexia) !important;
+  font-variant-numeric: tabular-nums slashed-zero !important;
+  letter-spacing: 0.06em !important;
+  font-weight: 800 !important;
+}
+
+body.modo-dislexia .score-number {
+  font-size: 32px !important;
+  padding: 8px 14px !important;
+}
+
+body.modo-dislexia .metric-tile strong,
+body.modo-dislexia .prof-kpi strong {
+  font-size: 22px !important;
+}
+
+body.modo-dislexia input[type="number"],
+body.modo-dislexia input[type="datetime-local"],
+body.modo-dislexia .filter-row-head strong,
+body.modo-dislexia .bar-row strong {
+  font-size: 17px !important;
+}
+
+body.modo-dislexia .coords-pill,
+body.modo-dislexia .bridge-concept-box code,
+body.modo-dislexia .vector-3d-readout,
+body.modo-dislexia .best-dates-mini {
+  font-size: 14.5px !important;
+}
+
+body.modo-baja-vision {
+  font-size: 17px;
+}
+
+body.modo-baja-vision .featured-result-card,
+body.modo-baja-vision .booking-card,
+body.modo-baja-vision .filter-box,
+body.modo-baja-vision .booking-search-card,
+body.modo-baja-vision .curiosidad-card,
+body.modo-baja-vision details.expandable-drawer {
+  border: 2.5px solid var(--nasa-navy) !important;
+}
+
+body.modo-motora .btn,
+body.modo-motora .a11y-btn,
+body.modo-motora .level-pill,
+body.modo-motora .preset-mission-btn,
+body.modo-motora .modo-tab,
+body.modo-motora select,
+body.modo-motora input[type="datetime-local"],
+body.modo-motora input[type="number"] {
+  min-height: 46px;
+  font-size: 15px;
+}
+
+body.modo-fotofobia {
+  --bg-page: #04112B;
+  --bg-card: #061F4A;
+  --bg-subtle: #04112B;
+  --text-main: #FFFFFF;
+  --text-muted: #DCE4EF;
+  --border-soft: #4773AA;
+}
+
+body.modo-fotofobia .featured-title-block h2,
+body.modo-fotofobia .card-body h3,
+body.modo-fotofobia .curiosidad-card h3,
+body.modo-fotofobia .section-heading h2,
+body.modo-fotofobia .optimal-window-banner h3,
+body.modo-fotofobia .metric-tile strong,
+body.modo-fotofobia .score-text strong,
+body.modo-fotofobia .filter-group h3,
+body.modo-fotofobia .search-cell label,
+body.modo-fotofobia details.expandable-drawer > summary,
+body.modo-fotofobia .adaptation-category-card h3,
+body.modo-fotofobia .comp-winner-banner,
+body.modo-fotofobia .student-academy-header h3,
+body.modo-fotofobia .student-pillar strong {
+  color: var(--nasa-white) !important;
+}
+
+body.modo-fotofobia .a11y-btn,
+body.modo-fotofobia .preset-mission-btn,
+body.modo-fotofobia .filter-chip,
+body.modo-fotofobia .modo-tab,
+body.modo-fotofobia .coords-pill,
+body.modo-fotofobia .best-dates-mini,
+body.modo-fotofobia .map-layer-pill,
+body.modo-fotofobia .amenity-tag,
+body.modo-fotofobia .intent-pill,
+body.modo-fotofobia .sin-fecha-toggle,
+body.modo-fotofobia .top-fecha-chip,
+body.modo-fotofobia .bridge-concept-box {
+  background-color: var(--nasa-horizon);
+  color: var(--nasa-ice);
+  border-color: var(--nasa-sky);
+}
+
+body.modo-fotofobia .search-feedback-toast,
+body.modo-fotofobia .top-fechas-panel h4,
+body.modo-fotofobia .bridge-head h4,
+body.modo-fotofobia .bridge-concept-box .pro-ref,
+body.modo-fotofobia .lupa-control-head,
+body.modo-fotofobia .lupa-control-head strong,
+body.modo-fotofobia .filter-row-head,
+body.modo-fotofobia .filter-row-head strong,
+body.modo-fotofobia .bar-row strong,
+body.modo-fotofobia .curiosidad-body,
+body.modo-fotofobia .booking-desc,
+body.modo-fotofobia .adaptation-category-card p,
+body.modo-fotofobia .student-pillar p,
+body.modo-fotofobia .kid-desc-box p,
+body.modo-fotofobia .section-heading p,
+body.modo-fotofobia .drawer-body p,
+body.modo-fotofobia .drawer-body label,
+body.modo-fotofobia .drawer-body strong,
+body.modo-fotofobia #panelAdaptaciones,
+body.modo-fotofobia #panelAdaptaciones summary,
+body.modo-fotofobia #panelAdaptaciones .summary-toggle-pill {
+  color: var(--nasa-white) !important;
+}
+
+body.modo-fotofobia .lupa-control-box {
+  background-color: var(--nasa-horizon);
+  border-color: var(--nasa-sky);
+}
+
+body.modo-fotofobia .lupa-mini-btn,
+body.modo-fotofobia .a11y-subtab-btn,
+body.modo-fotofobia .btn-outline-blue {
+  background-color: var(--nasa-navy);
+  color: var(--nasa-white) !important;
+  border-color: var(--nasa-sky);
+}
+
+body.modo-fotofobia .a11y-subtab-btn.active {
+  background-color: var(--nasa-red);
+  border-color: var(--nasa-red);
+  color: var(--nasa-white) !important;
+}
+
+body.modo-fotofobia .a11y-btn.active {
+  background-color: var(--nasa-blue);
+  color: var(--nasa-white) !important;
+  border-color: var(--nasa-white);
+}
+
+body.modo-fotofobia input[type="number"],
+body.modo-fotofobia input[type="datetime-local"],
+body.modo-fotofobia select {
+  background-color: var(--nasa-deep);
+  color: var(--nasa-white) !important;
+  border-color: var(--nasa-sky);
+}
+
+/* ============================================================================
+   ALINEACIÓN LIMPIA Y ENCUADRE EQUILIBRADO
+   ============================================================================ */
+.drawer-body {
+  padding: 16px 22px 20px;
+}
+
+.filter-group {
+  padding-left: 14px;
+  border-left: 3px solid var(--nasa-ice);
+  margin-left: 0;
+}
+
+.filter-group > h3,
+.filter-group .filter-row,
+.filter-group .filter-hint,
+.filter-group .mode-tabs-inline {
+  margin-left: 0;
+}
+
+.adaptation-category-card .a11y-btn-stack,
+.adaptation-category-card .lupa-control-box {
+  margin-left: 0;
+}
+
+.kid-desc-box,
+.bridge-concept-box,
+.student-pillar {
+  padding-left: 16px;
+  border-left: 4px solid var(--nasa-blue);
+}
+
+.curiosidad-content p.curiosidad-body,
+.booking-card-info .booking-desc {
+  padding-left: 0;
+  border-left: none;
+  text-align: left;
+}
+
+.section-container ul,
+.section-container ol,
+.drawer-body ul,
+.drawer-body ol {
+  padding-left: 22px;
+  margin-top: 6px;
+  margin-bottom: 10px;
+  line-height: 1.55;
+}
+
+body.modo-fotofobia .filter-group {
+  border-left-color: var(--nasa-horizon);
+}
+
+@media (min-width: 1120px) {
+  .hero-inner,
+  .section-container {
+    padding-left: 140px;
+    padding-right: 28px;
+  }
+}
+
+/* ============================================================================
+   MODO TDAH: PALABRAS CLAVE EN NEGRITA Y RESALTE LEGIBLE
+   ============================================================================ */
+body.modo-tdah strong,
+body.modo-tdah b,
+body.modo-tdah .tdah-kw {
+  font-weight: 800 !important;
+  color: var(--nasa-navy);
+  background-color: rgba(16, 91, 216, 0.09);
+  padding: 0 3px;
+  border-radius: 3px;
+}
+
+body.modo-fotofobia.modo-tdah strong,
+body.modo-fotofobia.modo-tdah b,
+body.modo-fotofobia.modo-tdah .tdah-kw {
+  color: var(--nasa-white) !important;
+  background-color: rgba(252, 61, 33, 0.25);
+}
+
+/* ============================================================================
+   LUPA EN EL CURSOR (Aumento configurable donde esté el puntero)
+   ============================================================================ */
+#cursorMagnifierLens {
+  position: fixed;
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  border: 3px solid var(--nasa-red);
+  box-shadow: 0 12px 32px rgba(4, 17, 43, 0.45), inset 0 0 0 2px var(--nasa-navy);
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 10000;
+  background-color: var(--bg-page);
+}
+
+#cursorMagnifierLens[hidden] {
+  display: none !important;
+}
+
+#cursorMagnifierContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* ============================================================================
+   PANEL DE ADAPTACIONES LATERAL FIJO A LA IZQUIERDA (Siempre accesible)
+   ============================================================================ */
+.a11y-drawer-wrapper {
+  position: fixed;
+  top: 72px;
+  left: 12px;
+  z-index: 9500;
+  width: auto;
+  max-width: calc(100vw - 24px);
+  margin: 0;
+  padding: 0;
+}
+
+#panelAdaptaciones {
+  background-color: var(--bg-card);
+  border: 2px solid var(--nasa-navy);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-float);
+  overflow: hidden;
+  width: auto;
+}
+
+#panelAdaptaciones > summary {
+  padding: 9px 14px;
+  font-size: 12.5px;
+  gap: 8px;
+}
+
+#panelAdaptaciones:not([open]) > summary .summary-left span:last-child {
+  display: none;
+}
+
+#panelAdaptaciones:not([open]) > summary::after {
+  content: "Adaptations";
+  font-weight: 800;
+  color: var(--nasa-navy);
+  font-size: 12.5px;
+}
+
+body.modo-fotofobia #panelAdaptaciones:not([open]) > summary::after {
+  color: var(--nasa-white);
+}
+
+#panelAdaptaciones:not([open]) > summary .summary-toggle-pill {
+  display: none;
+}
+
+#panelAdaptaciones[open] {
+  width: 345px;
+  max-width: calc(100vw - 24px);
+  max-height: calc(100vh - 90px);
+  overflow-y: auto;
+}
+
+#panelAdaptaciones[open] .drawer-body {
+  padding: 12px 14px 16px;
+}
+
+#panelAdaptaciones .adaptations-grid {
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.a11y-subtabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.a11y-subtab-btn {
+  border: 1.5px solid var(--border-soft);
+  background-color: var(--bg-subtle);
+  color: var(--nasa-navy);
+  font-size: 11.5px;
+  font-weight: 800;
+  padding: 7px 6px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.a11y-subtab-btn:hover {
+  border-color: var(--nasa-blue);
+}
+
+.a11y-subtab-btn.active {
+  background-color: var(--nasa-blue);
+  border-color: var(--nasa-blue);
+  color: var(--nasa-white);
+}
+
+#panelAdaptaciones .adaptation-category-card {
+  display: none;
+}
+
+#panelAdaptaciones .adaptation-category-card.active {
+  display: block;
+}
+
+@media (max-width: 720px) {
+  .a11y-drawer-wrapper {
+    top: auto;
+    bottom: 12px;
+    left: 10px;
+  }
+  #panelAdaptaciones[open] {
+    max-height: 70vh;
+    width: calc(100vw - 20px);
+  }
+}

@@ -1,0 +1,109 @@
+================================================================================
+  POSICIONES EXACTAS EN EL CODIGO DONDE CONECTAR LOS DATOS LUNARES EXTERNOS
+  Proyecto: NASA LunarBooking & eDreams Artemis (Exclusivo Polo Sur 84°S–90°S)
+================================================================================
+
+Este documento enumera con exactitud las ubicaciones de los ficheros y las
+lineas exactas donde debes conectar tus datos reales de iluminacion, comunicacion,
+pendiente del terreno, efemerides o catalogos del Polo Sur Lunar.
+La version completa maquetada y con Indice navegable esta disponible en:
+  -> DOCUMENTACION_CODIGO_Y_FUNCIONES_NASA_LUNAR.pdf
+
+--------------------------------------------------------------------------------
+TABLA RESUMEN RAPIDA DE PUNTOS DE INTEGRACION VERIFICADOS
+--------------------------------------------------------------------------------
+ID                       | FICHERO                     | LINEA  | FUNCION C++ / JS
+-----------------------------------------------------------------------------------------------
+[PUNTO_INTEGRACION_01]   | motor_datos_lunares.h       | 286    | calcularIluminacionSolarPunto(coord, dias_j2000, mastil_m)
+[PUNTO_INTEGRACION_02]   | motor_datos_lunares.h       | 341    | calcularComunicacionTierraPunto(coord, dias_j2000, modo, banda)
+[PUNTO_INTEGRACION_03]   | motor_datos_lunares.h       | 404    | calcularTopografiaYTemperaturaPunto(coord, elev_solar_deg, pct_ilu)
+[PUNTO_INTEGRACION_04]   | motor_datos_lunares.h       | 419    | buscarMejorVentanaMediaMaxima(serie, n, margen, modo, prioridad, top_ventanas)
+[PUNTO_INTEGRACION_05]   | motor_datos_lunares.h       | 502    | evaluarLocalizacionLunar(coord, rango, filtros)
+[PUNTO_INTEGRACION_06]   | motor_datos_lunares.h       | 650    | compararLocalizacionesYFechas(modo, puntoA, puntoB, rangoA, rangoB, filtros)
+[PUNTO_INTEGRACION_07]   | motor_datos_lunares.h       | 684    | obtenerCatalogoPuntosLunares()
+[PUNTO_INTEGRACION_08]   | servidor_lunar_booking.cpp  | 283    | procesarEndpointApi(ruta, body)
+[PUNTO_INTEGRACION_JS_01] | app.js                      | 919    | evaluarLocalEnJs(punto, payload, filtros)
+
+--------------------------------------------------------------------------------
+1) [PUNTO_INTEGRACION_01] (motor_datos_lunares.h)
+--------------------------------------------------------------------------------
+* Fichero : C:\Users\izanc\OneDrive\Escritorio\26-27\proyecto realista\motor_datos_lunares.h
+* Marca   : Linea 285 | Funcion: Linea 286
+* Firma   : calcularIluminacionSolarPunto(coord, dias_j2000, mastil_m)
+* Uso     : Sustituye este bloque por llamadas a efemérides SPICE / HORIZONS y trazado de rayos DEM LOLA para devolver elevación solar (°), azimut (°), porcentaje de iluminación (%) e irradiancia (W/m²).
+
+--------------------------------------------------------------------------------
+2) [PUNTO_INTEGRACION_02] (motor_datos_lunares.h)
+--------------------------------------------------------------------------------
+* Fichero : C:\Users\izanc\OneDrive\Escritorio\26-27\proyecto realista\motor_datos_lunares.h
+* Marca   : Linea 340 | Funcion: Linea 341
+* Firma   : calcularComunicacionTierraPunto(coord, dias_j2000, modo, banda)
+* Uso     : Sustituye por tu modelo de visibilidad directa Tierra-Luna (DTE) y cobertura orbital LunaNet / Gateway (elevación Tierra, azimut, cobertura %, margen Link Budget RF/Láser).
+
+--------------------------------------------------------------------------------
+3) [PUNTO_INTEGRACION_03] (motor_datos_lunares.h)
+--------------------------------------------------------------------------------
+* Fichero : C:\Users\izanc\OneDrive\Escritorio\26-27\proyecto realista\motor_datos_lunares.h
+* Marca   : Linea 403 | Funcion: Linea 404
+* Firma   : calcularTopografiaYTemperaturaPunto(coord, elev_solar_deg, pct_ilu)
+* Uso     : Conecta aquí lecturas reales de pendiente topográfica desde tus ficheros DEM del Polo Sur y balances térmicos Diviner LRO (Kelvin / °C).
+
+--------------------------------------------------------------------------------
+4) [PUNTO_INTEGRACION_04] (motor_datos_lunares.h)
+--------------------------------------------------------------------------------
+* Fichero : C:\Users\izanc\OneDrive\Escritorio\26-27\proyecto realista\motor_datos_lunares.h
+* Marca   : Linea 418 | Funcion: Linea 419
+* Firma   : buscarMejorVentanaMediaMaxima(serie, n, margen, modo, prioridad, top_ventanas)
+* Uso     : Algoritmo de sumas prefijas O(N) que halla la mejor ventana continua [n - margen, n + margen] y extrae hasta 5 ventanas disjuntas recomendadas cuando se busca sin fecha fija.
+
+--------------------------------------------------------------------------------
+5) [PUNTO_INTEGRACION_05] (motor_datos_lunares.h)
+--------------------------------------------------------------------------------
+* Fichero : C:\Users\izanc\OneDrive\Escritorio\26-27\proyecto realista\motor_datos_lunares.h
+* Marca   : Linea 501 | Funcion: Linea 502
+* Firma   : evaluarLocalizacionLunar(coord, rango, filtros)
+* Uso     : Genera la serie temporal completa paso a paso (paso_horas), evalúa filtros de misión y calcula la puntuación estilo Booking (0 a 10). Puedes inyectar aquí vectores CSV/HDF5 completos de golpe.
+
+--------------------------------------------------------------------------------
+6) [PUNTO_INTEGRACION_06] (motor_datos_lunares.h)
+--------------------------------------------------------------------------------
+* Fichero : C:\Users\izanc\OneDrive\Escritorio\26-27\proyecto realista\motor_datos_lunares.h
+* Marca   : Linea 639 | Funcion: Linea 650
+* Firma   : compararLocalizacionesYFechas(modo, puntoA, puntoB, rangoA, rangoB, filtros)
+* Uso     : Motor comparador multi-modo: dos lugares en fechas manuales, comparación de fechas óptimas por filtros o matriz cruzada sitio-parámetros.
+
+--------------------------------------------------------------------------------
+7) [PUNTO_INTEGRACION_07] (motor_datos_lunares.h)
+--------------------------------------------------------------------------------
+* Fichero : C:\Users\izanc\OneDrive\Escritorio\26-27\proyecto realista\motor_datos_lunares.h
+* Marca   : Linea 683 | Funcion: Linea 684
+* Firma   : obtenerCatalogoPuntosLunares()
+* Uso     : Devuelve los 8 emplazamientos oficiales Artemis del Polo Sur (Shackleton, Malapert, Nobile, Cabeus, Haworth, De Gerlache, Faustini, Connecting Ridge). Añade aquí nuevos sitios o centroides.
+
+--------------------------------------------------------------------------------
+8) [PUNTO_INTEGRACION_08] (servidor_lunar_booking.cpp)
+--------------------------------------------------------------------------------
+* Fichero : C:\Users\izanc\OneDrive\Escritorio\26-27\proyecto realista\servidor_lunar_booking.cpp
+* Marca   : Linea 282 | Funcion: Linea 283
+* Firma   : procesarEndpointApi(ruta, body)
+* Uso     : Despachador HTTP REST JSON (/api/catalogo, /api/buscar, /api/comparar) con soporte para búsqueda sin lugar fijo (SOLO_FECHAS), sin fecha fija (SOLO_LUGAR) y coordenadas esféricas (ESFERICAS).
+
+--------------------------------------------------------------------------------
+9) [PUNTO_INTEGRACION_JS_01] (app.js)
+--------------------------------------------------------------------------------
+* Fichero : C:\Users\izanc\OneDrive\Escritorio\26-27\proyecto realista\app.js
+* Marca   : Linea 919 | Funcion: Linea 919
+* Firma   : evaluarLocalEnJs(punto, payload, filtros)
+* Uso     : Motor espejo en JavaScript para funcionamiento autónomo offline cuando se abre index.html directamente sin servidor C++ activo en el puerto 8085.
+
+================================================================================
+COMO COMPILAR, PROBAR Y EJECUTAR EL SERVIDOR WEB C++17
+================================================================================
+1. Compilacion estatica (MSYS2 / MinGW-w64):
+   C:\msys64\ucrt64\bin\g++.exe -std=c++17 -O2 -static servidor_lunar_booking.cpp -o servidor_lunar_booking.exe -lws2_32 -pthread
+2. Pruebas unitarias integradas C++:
+   .\servidor_lunar_booking.exe --test
+3. Arranque del servidor HTTP (Puerto 8085):
+   .\servidor_lunar_booking.exe
+4. Navegador: http://127.0.0.1:8085/index.html
+================================================================================

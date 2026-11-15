@@ -1,0 +1,12 @@
+# docker compose up --build   ->  http://localhost:8085
+services:
+  lunar-booking:
+    build: .
+    image: lunar-booking:latest
+    ports:
+      - "8085:8085"
+    restart: unless-stopped
+    # Para usar el DEM LOLA real (horizonte y sombras del terreno), descomenta
+    # estas lineas y pon la ruta de tu ldem_87s_5mpp.tif:
+    # volumes:
+    #   - ./datos/ldem_87s_5mpp.tif:/datos/ldem_87s_5mpp.tif:ro
